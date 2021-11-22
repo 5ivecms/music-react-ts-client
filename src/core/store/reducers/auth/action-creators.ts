@@ -1,4 +1,4 @@
-import { UserModel } from '../../../models/User.model'
+import { UserModel } from '../../../../models/User.model'
 import { AuthActionTypes, SetUserAction } from './types'
 
 export const AuthActionCreators = {
