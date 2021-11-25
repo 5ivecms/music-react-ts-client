@@ -50,6 +50,12 @@ const endpoints = {
 
     return axios.get(`${uri}${query}`)
   },
+
+  bulkDelete: (ids: readonly string[]) => {
+    return axios.post(`/artists/bulkDelete`, {
+      _ids: [...ids],
+    })
+  },
 }
 
 export default endpoints

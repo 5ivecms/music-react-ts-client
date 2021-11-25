@@ -38,6 +38,13 @@ const artistsReducer = (
       return { ...state, pagination: action.payload }
     }
 
+    case ArtistsActionTypes.BULK_DELETE_SUCCESS: {
+      const newItems = state.items.filter(
+        (item) => !action.payload.includes(item._id)
+      )
+      return { ...state, items: newItems, isLoading: false }
+    }
+
     default:
       return state
   }

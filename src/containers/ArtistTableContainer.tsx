@@ -10,9 +10,14 @@ const ArtistTableContainer = () => {
     (state: RootState) => state.artists
   )
   const [currentPage, setCurrentPage] = useState(pagination.page)
+
   const handleChangePage = useCallback((event: unknown, newPage: number) => {
     setCurrentPage(newPage + 1)
   }, [])
+
+  const handleBulkDelete = (ids: readonly string[]) => {
+    dispatch(ArtistsActionCreators.bulkDelete(ids))
+  }
 
   useEffect(() => {
     dispatch(
@@ -35,6 +40,7 @@ const ArtistTableContainer = () => {
           pagination={pagination}
           onPageChange={handleChangePage}
           loading={isLoading}
+          onBulkDelete={handleBulkDelete}
         />
       ) : (
         <h1>Загрузка таблицы</h1>

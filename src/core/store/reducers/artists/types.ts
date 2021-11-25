@@ -14,6 +14,8 @@ export enum ArtistsActionTypes {
   SET_ERROR = 'SET_ERROR',
   SET_ARTISTS = 'SET_ARTISTS',
   SET_PAGINATION = 'SET_PAGINATION',
+  BULK_DELETE = 'BULK_DELETE',
+  BULK_DELETE_SUCCESS = 'BULK_DELETE_SUCCESS',
 }
 
 export interface SetIsLoading {
@@ -39,4 +41,20 @@ export interface SetPagination {
   payload: any
 }
 
-export type ArtistsAction = SetIsLoading | SetError | SetArtists | SetPagination
+export interface BulkDelete {
+  type: ArtistsActionTypes.BULK_DELETE
+  payload: string[]
+}
+
+export interface BulkDeleteSuccess {
+  type: ArtistsActionTypes.BULK_DELETE_SUCCESS
+  payload: readonly string[]
+}
+
+export type ArtistsAction =
+  | SetIsLoading
+  | SetError
+  | SetArtists
+  | SetPagination
+  | BulkDelete
+  | BulkDeleteSuccess
